@@ -10,4 +10,5 @@ public class BodiesScriptableObject : ScriptableObject
     public LDEnums.BodyType bodyType;
     public Sprite bodySprite;
     public List<OrganScriptableObject> listOfOrgans;
+    public Color color;
 }

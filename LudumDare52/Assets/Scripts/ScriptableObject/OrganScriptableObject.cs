@@ -11,4 +11,7 @@ public class OrganScriptableObject : ScriptableObject
     public Sprite organSprite;
     public float decayRate;
     public int score;
+
+    /// for testing will be removed
+    public Color color;
 }

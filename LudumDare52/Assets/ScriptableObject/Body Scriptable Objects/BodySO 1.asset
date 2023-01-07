@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6977cfc8e63bbab48b6a3263540c4d87, type: 3}
   m_Name: BodySO 1
   m_EditorClassIdentifier: 
-  bodyType: 2
-  bodySprite: {fileID: 0}
+  bodyType: 1
+  bodySprite: {fileID: 21300000, guid: 7e04d0e79c118f54fb810118f47bfcc3, type: 3}
   listOfOrgans:
   - {fileID: 11400000, guid: 193f362d43ffaa34893173ba00f4cee1, type: 2}
-  - {fileID: 11400000, guid: 343ff89417283024ebd245ccff9ab8d0, type: 2}
-  - {fileID: 11400000, guid: 4d89db2d73345a849959316efe656d69, type: 2}
   - {fileID: 11400000, guid: f6258ba7a92ec9446b21cbd0a6946606, type: 2}
+  - {fileID: 11400000, guid: 4d89db2d73345a849959316efe656d69, type: 2}
+  - {fileID: 11400000, guid: 343ff89417283024ebd245ccff9ab8d0, type: 2}
+  color: {r: 0, g: 0.083981276, b: 1, a: 1}

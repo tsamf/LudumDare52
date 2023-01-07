@@ -6,13 +6,18 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance = default;
 
-    private void Awake()
-    {
-        if (instance != this)
-        {
-            Destroy(gameObject);
-        }
+    [Range(1, 3)]
+    [SerializeField] private float minRateOfSpawning;
+    [Range(3, 10)]
+    [SerializeField] private float maxRateOfSpawning;
 
+
+    [SerializeField] private float conveyorBeltSpeed;
+
+    private float currentCBSpeed = 0;
+
+    private void Awake()
+    { 
         instance = this;
         DontDestroyOnLoad(gameObject);
     }
@@ -26,6 +31,22 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (currentCBSpeed != conveyorBeltSpeed)
+        {
+            currentCBSpeed = conveyorBeltSpeed;
+            EventManager.RaiseOnCBUpdateSpeedEvent(currentCBSpeed);
+        }
     }
+
+    private void StartGame()
+    {
+
+    }
+
+    private void EndGame()
+    {
+
+    }
+
+
 }

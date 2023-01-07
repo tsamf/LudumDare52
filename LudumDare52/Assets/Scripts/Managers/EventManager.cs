@@ -33,6 +33,15 @@ public class EventManager
 
     #endregion
 
+
+    #region Grinder events handlers
+
+    public delegate void OnBodyGrindedEventDelegate(int bodyID);
+
+    public static OnBodyGrindedEventDelegate OnBodyGrindedEventHandler = default;
+
+    #endregion
+
     /// add events
 
 
@@ -53,7 +62,7 @@ public class EventManager
         }
     }
 
-    #region Conveyor belt events regions
+    #region Conveyor belt events region
     /// Conveyor Belt Events
     /// 
 
@@ -85,5 +94,17 @@ public class EventManager
 
     #endregion
 
+
+    #region Grinder events region
+
+    public static void RaiseBodyGrindedEvent(int arg0)
+    {
+        if (OnBodyGrindedEventHandler != null)
+        {
+            OnBodyGrindedEventHandler.Invoke(arg0);
+        }
+    }
+
+    #endregion
 
 }

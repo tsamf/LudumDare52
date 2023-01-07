@@ -4,9 +4,11 @@ using UnityEngine;
 
 
 [RequireComponent(typeof(SurfaceEffector2D))]
-public class CBMovement : MonoBehaviour
+public class ConveyorBelt : MonoBehaviour
 {
     [Header("Set in Inspector")]
+
+    [SerializeField] internal Transform bodySpawnLocation;
 
     [SerializeField] private float speed;
 
@@ -53,6 +55,8 @@ public class CBMovement : MonoBehaviour
 
     private void Awake()
     {
+        Debug.Assert(bodySpawnLocation != null, name + " conveyor belt is missing body spawn location in the inspector");
+
         surfaceEffector2D = GetComponent<SurfaceEffector2D>();
     }
 

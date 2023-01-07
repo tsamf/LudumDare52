@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+using System.Linq;
+using System;
 
 public class LDEnums 
 {
@@ -15,10 +16,9 @@ public class LDEnums
 
     public enum BodyType
     {
-        None    = 0,
-        Type1   = 1,
-        Type2   = 2,
-        Type3   = 3,
+        Type1   = 0,
+        Type2   = 1,
+        Type3   = 2,
     }
 
 
@@ -44,5 +44,10 @@ public class LDEnums
         None = 0,
         Active = 1,
         Paused = 2,
+    }
+
+    public static Random test()
+    {
+       return new Random();       
     }
 }
