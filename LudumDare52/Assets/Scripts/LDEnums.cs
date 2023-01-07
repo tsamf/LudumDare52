@@ -39,4 +39,10 @@ public class LDEnums
         FuseBox = 3,
     }
 
+    public enum ConveyorBeltMotionStatus
+    {
+        None = 0,
+        Active = 1,
+        Paused = 2,
+    }
 }

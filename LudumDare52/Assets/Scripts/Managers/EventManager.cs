@@ -15,6 +15,24 @@ public class EventManager
     public static OnHarvetsToolErrorEventDelegate OnHarvetsToolErrorEventHandler = default;
 
 
+    #region Conveyor belt events handlers
+
+    public delegate void OnCBMotionPauseEventDelegate();
+
+    public delegate void OnCBMotionResumeEventDelegate();
+
+    public delegate void OnCBUpdateSpeedEventDelegate(float speed);
+
+
+    public static OnCBMotionPauseEventDelegate OnCBMotionPauseEventHandler = default;
+
+    public static OnCBMotionResumeEventDelegate OnCBMotionResumeEventHandler = default;
+
+    public static OnCBUpdateSpeedEventDelegate OnCBUpdateSpeedEventHandler = default;
+
+
+    #endregion
+
     /// add events
 
 
@@ -34,5 +52,38 @@ public class EventManager
             OnHarvetsToolErrorEventHandler.Invoke();
         }
     }
+
+    #region Conveyor belt events regions
+    /// Conveyor Belt Events
+    /// 
+
+    public static void RaiseOnConveyorBeltMotionPauseEvent()
+    {
+        if (OnCBMotionPauseEventHandler != null)
+        {
+            OnCBMotionPauseEventHandler.Invoke();
+        }
+    }
+
+
+    public static void RaiseOnConveyorBeltMotionResumeEvent()
+    {
+        if (OnCBMotionResumeEventHandler != null)
+        {
+            OnCBMotionResumeEventHandler.Invoke();
+        }
+    }
+
+
+    public static void RaiseOnCBUpdateSpeedEvent(float speed)
+    {
+        if (OnCBUpdateSpeedEventHandler != null)
+        {
+            OnCBUpdateSpeedEventHandler.Invoke(speed);
+        }
+    }
+
+    #endregion
+
 
 }
