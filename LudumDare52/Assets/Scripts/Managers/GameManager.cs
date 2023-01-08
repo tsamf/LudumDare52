@@ -15,6 +15,11 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] internal float conveyorBeltSpeed = 2;
 
+    [SerializeField] internal int maxNoOfOrgansGrindingAllowed = 10;
+    [SerializeField] internal float maxRageBarValue = 1;
+
+    [SerializeField] internal LDEnums.GameState gameState = LDEnums.GameState.None;
+
     private float currentCBSpeed = 0;
 
     private void Awake()
@@ -23,10 +28,21 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    private void OnEnable()
+    {
+        EventManager.OnGameOverEventHandler += EndGame;
+    }
+
+    private void OnDisable()
+    {
+        EventManager.OnGameOverEventHandler -= EndGame;
+
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameState = LDEnums.GameState.Running;
     }
 
     // Update is called once per frame
@@ -51,6 +67,8 @@ public class GameManager : MonoBehaviour
 
     private void EndGame()
     {
+        Debug.LogFormat("Game Over");
+        gameState = LDEnums.GameState.Over;
 
     }
 }

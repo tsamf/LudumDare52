@@ -121,6 +121,11 @@ public class Spawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!GameManager.instance.gameState.Equals(LDEnums.GameState.Running))
+        {
+            return;
+        }
+
         timer += Time.deltaTime;
         if (timer > currentRateOfSpawning)
         {
@@ -129,5 +134,7 @@ public class Spawner : MonoBehaviour
             SpawnBodies();
         }
     }
+
+
 
 }

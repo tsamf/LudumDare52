@@ -18,6 +18,13 @@ public class Grinder : MonoBehaviour
         if (collision.TryGetComponent(out DeadBody deadBody))
         {
             EventManager.RaiseBodyGrindedEvent(deadBody.currentConveyorBeltID);
+
+            if (!deadBody.organs[0].isHarvested || !deadBody.organs[1].isHarvested)
+            {
+                Debug.LogFormat("Body with organ grinded {0} ", GameManager.instance.maxRageBarValue / GameManager.instance.maxNoOfOrgansGrindingAllowed);
+                EventManager.RaiseUpdateRageMeterEvent(GameManager.instance.maxRageBarValue/ GameManager.instance.maxNoOfOrgansGrindingAllowed);
+            }
+
             Destroy(deadBody.gameObject);
         }
     }

@@ -15,6 +15,33 @@ public class EventManager
     public static OnHarvetsToolErrorEventDelegate OnHarvetsToolErrorEventHandler = default;
 
 
+    #region GameLoop Events
+
+    public delegate void GameOverEventDelegate();
+    public delegate void GameScoreUpdateDelegate();
+
+    public static GameOverEventDelegate OnGameOverEventHandler = default;
+    public static GameScoreUpdateDelegate OnGameScoreUpdatetHandler = default;
+
+    public static void RaiseGameOverEvent()
+    {
+        if (OnGameOverEventHandler != null)
+        {
+            OnGameOverEventHandler.Invoke();
+        }
+    }
+
+    public static void RaiseGameScoreUpdateEvent()
+    {
+        if (OnGameScoreUpdatetHandler != null)
+        {
+            OnGameScoreUpdatetHandler.Invoke();
+        }
+    }
+    #endregion
+
+
+
     #region Grinder events handlers
 
     public delegate void OnBodyGrindedEventDelegate(int bodyID);
@@ -42,6 +69,7 @@ public class EventManager
             OnHarvetsToolErrorEventHandler.Invoke();
         }
     }
+
 
     #region Conveyor belt events region
     /// Conveyor Belt Events
@@ -176,5 +204,6 @@ public class EventManager
 
 
     #endregion
+
 
 }

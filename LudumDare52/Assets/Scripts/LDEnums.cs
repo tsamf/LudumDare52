@@ -48,6 +48,15 @@ public class LDEnums
         Paused = 2,
     }
 
+
+    public enum GameState
+    {
+        None = 0,
+        Running = 1,
+        Paused = 2,
+        Over = 3,
+    }
+
     public static Random test()
     {
        return new Random();       
