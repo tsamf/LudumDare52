@@ -8,6 +8,9 @@ public class ConveyorBelt : MonoBehaviour
 {
     [Header("Set in Inspector")]
 
+    [Range(0,2)]
+    [SerializeField] internal int conveyorBeltID = 0;
+
     [SerializeField] internal Transform bodySpawnLocation;
 
     [SerializeField] private float speed;
@@ -26,15 +29,21 @@ public class ConveyorBelt : MonoBehaviour
     private float currentSpeed = 0;
 
 
-    public void EnableMotion()
+    public void EnableMotion(int cbID)
     {
+        if (!conveyorBeltID.Equals(cbID))
+            return;
+
         OnUpdateMotionStatus(LDEnums.ConveyorBeltMotionStatus.Active);
         OnUpdateSpeed(speed);
     }
 
 
-    public void PauseMotion()
+    public void PauseMotion(int cbID)
     {
+        if (!conveyorBeltID.Equals(cbID))
+            return;
+
         OnUpdateMotionStatus(LDEnums.ConveyorBeltMotionStatus.Paused);
         OnUpdateSpeed(pauseSpeed);
     }
@@ -58,6 +67,12 @@ public class ConveyorBelt : MonoBehaviour
         Debug.Assert(bodySpawnLocation != null, name + " conveyor belt is missing body spawn location in the inspector");
 
         surfaceEffector2D = GetComponent<SurfaceEffector2D>();
+    }
+
+    private void Start()
+    {
+        speed = GameManager.instance.conveyorBeltSpeed;
+        OnUpdateSpeed(speed);
     }
 
 

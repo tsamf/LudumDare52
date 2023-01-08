@@ -31,20 +31,30 @@ public class MovementController : MonoBehaviour
     private InputActionReference dash;
     private InputActionReference interact;
 
-    private void Movement(CallbackContext context)
-    {
+    //private void Movement(CallbackContext context)
+    //{
 
+
+    //}
+
+    private void Awake()
+    {
+        Debug.LogFormat("AWAKE ");
 
     }
 
 
     private void OnEnable()
     {
-        movement = InputManager.instance.movement;
-        dash = InputManager.instance.dash;
-        interact = InputManager.instance.interact;
+        Debug.LogFormat("Movement ");
 
-        movement.action.performed += Movement;
+        movement = InputManager.instance.movement;
+        dash        = InputManager.instance.dash;
+        interact    = InputManager.instance.interact;
+
+        Debug.LogFormat("Movement {0}",movement);
+
+        //movement.action.performed += Movement;
     }
 
 
@@ -54,7 +64,7 @@ public class MovementController : MonoBehaviour
         dash = null;
         interact = null;
 
-        movement.action.performed -= Movement;
+        //movement.action.performed -= Movement;
 
     }
 

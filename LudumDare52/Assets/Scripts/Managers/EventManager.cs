@@ -15,25 +15,6 @@ public class EventManager
     public static OnHarvetsToolErrorEventDelegate OnHarvetsToolErrorEventHandler = default;
 
 
-    #region Conveyor belt events handlers
-
-    public delegate void OnCBMotionPauseEventDelegate();
-
-    public delegate void OnCBMotionResumeEventDelegate();
-
-    public delegate void OnCBUpdateSpeedEventDelegate(float speed);
-
-
-    public static OnCBMotionPauseEventDelegate OnCBMotionPauseEventHandler = default;
-
-    public static OnCBMotionResumeEventDelegate OnCBMotionResumeEventHandler = default;
-
-    public static OnCBUpdateSpeedEventDelegate OnCBUpdateSpeedEventHandler = default;
-
-
-    #endregion
-
-
     #region Grinder events handlers
 
     public delegate void OnBodyGrindedEventDelegate(int bodyID);
@@ -66,20 +47,38 @@ public class EventManager
     /// Conveyor Belt Events
     /// 
 
-    public static void RaiseOnConveyorBeltMotionPauseEvent()
+    #region Conveyor belt events handlers
+
+    public delegate void OnCBMotionPauseEventDelegate(int cbID);
+
+    public delegate void OnCBMotionResumeEventDelegate(int cbID);
+
+    public delegate void OnCBUpdateSpeedEventDelegate(float speed);
+
+
+    public static OnCBMotionPauseEventDelegate OnCBMotionPauseEventHandler = default;
+
+    public static OnCBMotionResumeEventDelegate OnCBMotionResumeEventHandler = default;
+
+    public static OnCBUpdateSpeedEventDelegate OnCBUpdateSpeedEventHandler = default;
+
+
+    #endregion
+
+    public static void RaiseOnConveyorBeltMotionPauseEvent(int cbID)
     {
         if (OnCBMotionPauseEventHandler != null)
         {
-            OnCBMotionPauseEventHandler.Invoke();
+            OnCBMotionPauseEventHandler.Invoke(cbID);
         }
     }
 
 
-    public static void RaiseOnConveyorBeltMotionResumeEvent()
+    public static void RaiseOnConveyorBeltMotionResumeEvent(int cbID)
     {
         if (OnCBMotionResumeEventHandler != null)
         {
-            OnCBMotionResumeEventHandler.Invoke();
+            OnCBMotionResumeEventHandler.Invoke(cbID);
         }
     }
 
@@ -102,6 +101,38 @@ public class EventManager
         if (OnBodyGrindedEventHandler != null)
         {
             OnBodyGrindedEventHandler.Invoke(arg0);
+        }
+    }
+
+    #endregion
+
+
+    #region InteractionUI Eventsx`
+
+    /// Delegate
+    public delegate void TriggerEnterInteractableVolumeEventDelegate();
+
+    public delegate void TriggerExitInteractableVolumeEventDelegate();
+
+    // handler
+    public static TriggerEnterInteractableVolumeEventDelegate OnTriggerEnterInteractableEventHandler = default;
+
+    public static TriggerExitInteractableVolumeEventDelegate OnTriggerExitInteractableEventHandler = default;
+
+    /// Invoker
+    public static void RaiseOnTriggerEnterInteractableVolumeEvent()
+    {
+        if (OnTriggerEnterInteractableEventHandler != null)
+        {
+            OnTriggerEnterInteractableEventHandler.Invoke();
+        }
+    }
+
+    public static void RaiseOnTriggerExitInteractableVolumeEvent()
+    {
+        if (OnTriggerExitInteractableEventHandler != null)
+        {
+            OnTriggerExitInteractableEventHandler.Invoke();
         }
     }
 

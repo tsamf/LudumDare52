@@ -44,3 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50aec1d606f9e564b9de0b0f4ae588d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minRateOfSpawning: 0
+  maxRateOfSpawning: 0
+  conveyorBeltSpeed: 1.2

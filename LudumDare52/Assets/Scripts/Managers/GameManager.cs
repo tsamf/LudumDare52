@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float maxRateOfSpawning;
 
 
-    [SerializeField] private float conveyorBeltSpeed;
+    [SerializeField] internal float conveyorBeltSpeed = 2;
 
     private float currentCBSpeed = 0;
 
