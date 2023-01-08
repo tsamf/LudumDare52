@@ -107,7 +107,7 @@ public class EventManager
     #endregion
 
 
-    #region InteractionUI Eventsx`
+    #region InteractionUI Eventsx
 
     /// Delegate
     public delegate void TriggerEnterInteractableVolumeEventDelegate();
@@ -135,6 +135,45 @@ public class EventManager
             OnTriggerExitInteractableEventHandler.Invoke();
         }
     }
+
+    #endregion
+
+
+    #region Player Tool / Organ events
+
+    public delegate void PlayerPickUpToolEventDelegate(LDEnums.Tools toolType, Sprite sprite, float harvestRate);
+    public delegate void PlayerPickUpOrganEventDelegate(LDEnums.OrgansType toolType, Sprite sprite);
+    public delegate void PlayerCollectOrganEventDelegate(LDEnums.OrgansType toolType);
+
+    public static PlayerPickUpToolEventDelegate OnPlayerPickUpToolEventHandler = default;
+    public static PlayerPickUpOrganEventDelegate OnPlayerPickUpOrganEventHandler = default;
+    public static PlayerCollectOrganEventDelegate OnPlayerCollectOrganEventHandler = default;
+
+
+    public static void RaisePlayerPickUpToolEvent(LDEnums.Tools toolType, Sprite sprite, float harvestRate)
+    {
+        if (OnPlayerPickUpToolEventHandler != null)
+        {
+            OnPlayerPickUpToolEventHandler.Invoke(toolType, sprite, harvestRate);
+        }
+    }
+
+    public static void RaisePlayerPickUpOrganEvent(LDEnums.OrgansType organType, Sprite sprite)
+    {
+        if (OnPlayerPickUpOrganEventHandler != null)
+        {
+            OnPlayerPickUpOrganEventHandler.Invoke(organType, sprite);
+        }
+    }
+
+    public static void RaisePlayerCollectOrganEvent(LDEnums.OrgansType organType)
+    {
+        if (OnPlayerCollectOrganEventHandler != null)
+        {
+            OnPlayerCollectOrganEventHandler.Invoke(organType);
+        }
+    }
+
 
     #endregion
 

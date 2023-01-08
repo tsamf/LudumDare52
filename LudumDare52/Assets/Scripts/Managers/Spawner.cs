@@ -72,18 +72,19 @@ public class Spawner : MonoBehaviour
             Organ organOne = deadBody.organs[0];
             Organ organTwo = deadBody.organs[1];
 
-
+            organOne.scriptableObject       = firstOrgan;
             organOne.spriteRenderer.sprite  = firstOrgan.organSprite;          
             organOne.startScore             = firstOrgan.score;
             organOne.decayRate              = firstOrgan.decayRate;
             organOne.toolToUse              = firstOrgan.toolToUse;
-            organOne.spriteRenderer.color   = firstOrgan.color;         // for testing will be removed once we have the sprites
+            //organOne.spriteRenderer.color   = firstOrgan.color;         // for testing will be removed once we have the sprites
 
+            organTwo.scriptableObject       = secondOrgan;
+            organTwo.spriteRenderer.sprite  = secondOrgan.organSprite;
             organTwo.startScore             = secondOrgan.score;
             organTwo.decayRate              = secondOrgan.decayRate;
-            organTwo.spriteRenderer.sprite  = secondOrgan.organSprite;
             organTwo.toolToUse              = secondOrgan.toolToUse;
-            organTwo.spriteRenderer.color   = secondOrgan.color;        // for testing will be removed once we have the sprites
+            //organTwo.spriteRenderer.color   = secondOrgan.color;        // for testing will be removed once we have the sprites
 
             // obsolete
             //deadBody.organTwoSpriteRenderer.sprite  = secondOrgan.organSprite;

@@ -11,9 +11,11 @@ public class Organ : MonoBehaviour
     [Header("Set Dynamically")]
     public Gradient gradiant;
 
+    [SerializeField] internal OrganScriptableObject scriptableObject;
     [SerializeField] internal SpriteRenderer spriteRenderer = default;
 
     [SerializeField] internal bool isDecomposed = false; /// use this to prevent player from harvest organ which are decomposed
+    [SerializeField] internal bool isHarvested = false;
 
     [Tooltip("value 60 means in 1 second this organ will be decomposed")]
     [SerializeField] internal float decayRate;
@@ -27,6 +29,12 @@ public class Organ : MonoBehaviour
 
     [SerializeField] private float currentLife = 0;
     private float currentScore = default;
+
+    internal void OnOrganPickedUP()
+    {
+        isHarvested = true;
+        gameObject.SetActive(false);
+    }
 
     private void Awake()
     {

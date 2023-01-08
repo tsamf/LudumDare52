@@ -38,6 +38,7 @@ public class LDEnums
         ConveyorBelt = 2,
         FuseBox = 3,
         DeadBody = 4,
+        Tools = 5,
     }
 
     public enum ConveyorBeltMotionStatus

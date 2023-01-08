@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 7a8397632e3b63e40bbddeec266a6b7c, type: 3}
   m_Name: ScoopToolSO
-  m_EditorClassIdentifier: Assembly-CSharp::ToolScriptableObject
+  m_EditorClassIdentifier: 
   toolType: 2
   organType: 3
-  toolSprite: {fileID: 0}
+  toolSprite: {fileID: 21300000, guid: 0a8e0ea487c100c4b8e3d8f3cc28be5f, type: 3}
   harvestTime: 3
