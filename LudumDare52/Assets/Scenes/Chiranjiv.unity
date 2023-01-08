@@ -311,9 +311,6 @@ MonoBehaviour:
   - {fileID: 929852841}
   - {fileID: 877917997}
   - {fileID: 1758432562}
-  randomBody: 0
-  randomSpawnLocation: 0
-  availableConveyorBelts: 000000000100000002000000
 --- !u!1001 &768568745
 PrefabInstance:
   m_ObjectHideFlags: 0

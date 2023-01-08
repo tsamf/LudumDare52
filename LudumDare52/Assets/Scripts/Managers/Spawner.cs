@@ -21,10 +21,8 @@ public class Spawner : MonoBehaviour
     private float timer;
     private float currentRateOfSpawning; // random b/w min and max rate of spawning
 
-    public int randomBody;
-    public int randomSpawnLocation;
-    public List<int> availableConveyorBelts = new List<int>() { 0,1,2 };
-
+    private int randomBody;
+    private List<int> availableConveyorBelts = new List<int>() { 0,1,2 };
 
     public void OnUpdateAvailableConveyorBelt(int id)
     {
@@ -33,7 +31,6 @@ public class Spawner : MonoBehaviour
             availableConveyorBelts.Add(id);
         }
     }
-
 
 
     public void SpawnBodies()
@@ -72,11 +69,25 @@ public class Spawner : MonoBehaviour
             OrganScriptableObject firstOrgan = t[0];
             OrganScriptableObject secondOrgan = t[1];
 
-            deadBody.organOneSpriteRenderer.sprite  = firstOrgan.organSprite;
-            deadBody.organOneSpriteRenderer.color   = firstOrgan.color; // for testing will be removed once we have the sprites
+            Organ organOne = deadBody.organs[0];
+            Organ organTwo = deadBody.organs[1];
 
-            deadBody.organTwoSpriteRenderer.sprite  = secondOrgan.organSprite;
-            deadBody.organTwoSpriteRenderer.color   = secondOrgan.color; // for testing will be removed once we have the sprites
+
+            organOne.spriteRenderer.sprite  = firstOrgan.organSprite;          
+            organOne.startScore             = firstOrgan.score;
+            organOne.decayRate              = firstOrgan.decayRate;
+            organOne.toolToUse              = firstOrgan.toolToUse;
+            organOne.spriteRenderer.color   = firstOrgan.color;         // for testing will be removed once we have the sprites
+
+            organTwo.startScore             = secondOrgan.score;
+            organTwo.decayRate              = secondOrgan.decayRate;
+            organTwo.spriteRenderer.sprite  = secondOrgan.organSprite;
+            organTwo.toolToUse              = secondOrgan.toolToUse;
+            organTwo.spriteRenderer.color   = secondOrgan.color;        // for testing will be removed once we have the sprites
+
+            // obsolete
+            //deadBody.organTwoSpriteRenderer.sprite  = secondOrgan.organSprite;
+            //deadBody.organTwoSpriteRenderer.color   = secondOrgan.color; // for testing will be removed once we have the sprites
         }
     }
 
@@ -93,10 +104,7 @@ public class Spawner : MonoBehaviour
     private void OnDisable()
     {
         EventManager.OnBodyGrindedEventHandler -= OnUpdateAvailableConveyorBelt;
-
     }
-
-
 
     // Start is called before the first frame update
     void Start()
