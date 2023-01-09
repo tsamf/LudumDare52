@@ -9,4 +9,5 @@ public class ToolScriptableObject : ScriptableObject
     public LDEnums.OrgansType organType;
     public Sprite toolSprite;
     public int harvestTime;
+    public AudioClip pickupSFX;
 }

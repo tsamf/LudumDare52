@@ -11,11 +11,12 @@ public class PlayerToolController : MonoBehaviour
     [SerializeField] internal PlayerTool playerToolComponent;
 
 
-    internal void OnPickUpTool(LDEnums.Tools newTool, Sprite toolSprite, float harvestRate)
+    internal void OnPickUpTool(LDEnums.Tools newTool, Sprite toolSprite, float harvestRate, AudioClip pickupSFX)
     {
         currentToolInHand = newTool;
         this.harvestRate = harvestRate;
         playerToolComponent.ChangeToolImage(toolSprite);
+        AudioSource.PlayClipAtPoint(pickupSFX, Camera.main.transform.position);
     }
 
     private void Awake()
@@ -36,6 +37,6 @@ public class PlayerToolController : MonoBehaviour
 
     private void Start()
     {
-        OnPickUpTool(LDEnums.Tools.None, null, 0); // initalize
+        OnPickUpTool(LDEnums.Tools.None, null, 0, null); // initalize
     }
 }

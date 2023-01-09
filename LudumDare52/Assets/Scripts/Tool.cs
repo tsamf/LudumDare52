@@ -73,7 +73,7 @@ public class Tool : MonoBehaviour, IInteractable
             {
                 Debug.LogFormat("E pressed {0}", toolType.ToString());
                 /// swap tool in the player tool
-                EventManager.RaisePlayerPickUpToolEvent(toolScriptableObject.toolType, toolScriptableObject.toolSprite, toolScriptableObject.harvestTime);
+                EventManager.RaisePlayerPickUpToolEvent(toolScriptableObject.toolType, toolScriptableObject.toolSprite, toolScriptableObject.harvestTime, toolScriptableObject.pickupSFX);
             }
         }
     }

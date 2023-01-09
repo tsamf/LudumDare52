@@ -169,7 +169,7 @@ public class EventManager
 
     #region Player Tool / Organ events
 
-    public delegate void PlayerPickUpToolEventDelegate(LDEnums.Tools toolType, Sprite sprite, float harvestRate);
+    public delegate void PlayerPickUpToolEventDelegate(LDEnums.Tools toolType, Sprite sprite, float harvestRate, AudioClip pickupSFX);
     public delegate void PlayerPickUpOrganEventDelegate(LDEnums.OrgansType organType, Sprite sprite, float organScore);
     public delegate void PlayerCollectOrganEventDelegate(LDEnums.OrgansType organType,float score);
 
@@ -178,11 +178,11 @@ public class EventManager
     public static PlayerCollectOrganEventDelegate OnPlayerCollectOrganEventHandler = default;
 
 
-    public static void RaisePlayerPickUpToolEvent(LDEnums.Tools toolType, Sprite sprite, float harvestRate)
+    public static void RaisePlayerPickUpToolEvent(LDEnums.Tools toolType, Sprite sprite, float harvestRate, AudioClip pickupSFX)
     {
         if (OnPlayerPickUpToolEventHandler != null)
         {
-            OnPlayerPickUpToolEventHandler.Invoke(toolType, sprite, harvestRate);
+            OnPlayerPickUpToolEventHandler.Invoke(toolType, sprite, harvestRate, pickupSFX);
         }
     }
 
