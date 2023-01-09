@@ -16,7 +16,11 @@ public class PlayerToolController : MonoBehaviour
         currentToolInHand = newTool;
         this.harvestRate = harvestRate;
         playerToolComponent.ChangeToolImage(toolSprite);
-        AudioSource.PlayClipAtPoint(pickupSFX, Camera.main.transform.position);
+        
+        if(pickupSFX != null)
+        {
+            AudioSource.PlayClipAtPoint(pickupSFX, Camera.main.transform.position);
+        }
     }
 
     private void Awake()

@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minRateOfSpawning: 0
   maxRateOfSpawning: 0
-  conveyorBeltSpeed: 1.2
+  conveyorBeltSpeed: 0.5
   maxNoOfOrgansGrindingAllowed: 10
   maxRageBarValue: 1
   gameState: 0

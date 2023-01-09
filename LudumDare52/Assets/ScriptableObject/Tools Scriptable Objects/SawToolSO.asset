@@ -16,3 +16,4 @@ MonoBehaviour:
   organType: 4
   toolSprite: {fileID: 21300000, guid: c6ecce493b0b06349ac0bcf37bce37cd, type: 3}
   harvestTime: 2
+  pickupSFX: {fileID: 8300000, guid: ff52d1ac7b29a5a49b02baf8c910aa51, type: 3}

@@ -9,6 +9,8 @@ public class PlayerOrganController : MonoBehaviour
     [SerializeField] internal LDEnums.OrgansType currentOrganInHand;
     [SerializeField] internal float currentOrganScore;
     [SerializeField] internal PlayerOrgan playerOrganComponent;
+    [SerializeField] internal AudioClip organPickUpSFX;
+    [SerializeField] internal AudioClip organCollectedSFX;
 
 
     internal void OnPickUpOrgan(LDEnums.OrgansType newOrgan, Sprite organSprite, float organScore)
@@ -16,6 +18,8 @@ public class PlayerOrganController : MonoBehaviour
         currentOrganInHand = newOrgan;
         currentOrganScore = organScore;
         playerOrganComponent.ChangeOrganImage(organSprite);
+
+        AudioSource.PlayClipAtPoint(organPickUpSFX, Camera.main.transform.position);
     }
 
     internal void OnOrganCollected(LDEnums.OrgansType _organ, float _score)
@@ -23,6 +27,7 @@ public class PlayerOrganController : MonoBehaviour
         currentOrganInHand = LDEnums.OrgansType.None;
         currentOrganScore = 0f;
         playerOrganComponent.ChangeOrganImage(null);
+        AudioSource.PlayClipAtPoint(organCollectedSFX, Camera.main.transform.position);
     }
 
 
@@ -47,7 +52,9 @@ public class PlayerOrganController : MonoBehaviour
 
     private void Start()
     {
-        OnPickUpOrgan(LDEnums.OrgansType.None, null, 0); // initalize
+        currentOrganInHand = LDEnums.OrgansType.None;
+        currentOrganScore = 0;
+        playerOrganComponent.ChangeOrganImage(null);
     }
 
 }

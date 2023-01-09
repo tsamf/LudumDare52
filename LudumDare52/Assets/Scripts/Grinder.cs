@@ -7,6 +7,8 @@ public class Grinder : MonoBehaviour
     [Range(-1,2)]
     [SerializeField] private int grinderID = -1;
 
+    [SerializeField] private AudioClip grindingSFX;
+
     private void Awake()
     {
         Debug.Assert(grinderID != -1, name + " grinder Id is not set in the inspector");
@@ -25,6 +27,7 @@ public class Grinder : MonoBehaviour
                 EventManager.RaiseUpdateRageMeterEvent(GameManager.instance.maxRageBarValue/ GameManager.instance.maxNoOfOrgansGrindingAllowed);
             }
 
+            AudioSource.PlayClipAtPoint(grindingSFX, Camera.main.transform.position);
             Destroy(deadBody.gameObject);
         }
     }

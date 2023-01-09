@@ -280,6 +280,8 @@ MonoBehaviour:
   currentOrganInHand: 0
   currentOrganScore: 0
   playerOrganComponent: {fileID: 0}
+  organPickUpSFX: {fileID: 8300000, guid: 888427440845b704591fcfcc9723c136, type: 3}
+  organCollectedSFX: {fileID: 8300000, guid: 028d4d6124b95aa46b8c51d044e4fbd5, type: 3}
 --- !u!95 &-6118071696982113687
 Animator:
   serializedVersion: 4

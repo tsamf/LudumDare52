@@ -24,6 +24,8 @@ public class DeadBody : MonoBehaviour, IInteractable
     /// Which conveyor belt this body is on
     [SerializeField] internal int currentConveyorBeltID;
     [SerializeField] internal InputActionReference interactionInputAction;
+    [SerializeField] internal AudioClip harvestingSFX;
+    [SerializeField] internal bool hasPlayed;
 
     public bool canInteract = false;
     public bool isHarvesting = false;
@@ -175,12 +177,18 @@ public class DeadBody : MonoBehaviour, IInteractable
             bool keyPressed = interactionInputAction.action.IsPressed();
             if (keyPressed)
             {
+                if(!hasPlayed)
+                {
+                    AudioSource.PlayClipAtPoint(harvestingSFX, Camera.main.transform.position);
+                    hasPlayed = true;
+                }
                 harvestbar.EnableBar();
                 timer += Time.deltaTime;
                 harvestbar.UpdateBar(timer/harvestTime);
 
                 if (timer >= harvestTime)
                 {
+                    hasPlayed = false;
                     canInteract = false;
                     harvestbar.DisableBar();
                     harvestingOrgan.OnOrganPickedUP();

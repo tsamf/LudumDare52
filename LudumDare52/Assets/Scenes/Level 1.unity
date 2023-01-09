@@ -314,6 +314,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 37.363
       objectReference: {fileID: 0}
+    - target: {fileID: 733595166299436204, guid: 1db7a400426d02a41bad425238c25181, type: 3}
+      propertyPath: m_Size.y
+      value: 2.8676589
+      objectReference: {fileID: 0}
+    - target: {fileID: 733595166299436204, guid: 1db7a400426d02a41bad425238c25181, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.4338297
+      objectReference: {fileID: 0}
     - target: {fileID: 6523293075571576203, guid: 1db7a400426d02a41bad425238c25181, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.6555459
@@ -403,6 +411,14 @@ PrefabInstance:
     - target: {fileID: 7910546928219268116, guid: 9c14b496125cf1d4db6a2902e67ca58b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 28.332
+      objectReference: {fileID: 0}
+    - target: {fileID: 7910546928219268117, guid: 9c14b496125cf1d4db6a2902e67ca58b, type: 3}
+      propertyPath: m_Size.y
+      value: 3.217284
+      objectReference: {fileID: 0}
+    - target: {fileID: 7910546928219268117, guid: 9c14b496125cf1d4db6a2902e67ca58b, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.608642
       objectReference: {fileID: 0}
     - target: {fileID: 7910546928398236624, guid: 9c14b496125cf1d4db6a2902e67ca58b, type: 3}
       propertyPath: m_Sprite
@@ -510,6 +526,10 @@ PrefabInstance:
       propertyPath: grinderID
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1308815486, guid: e1df6dae394b11940a3e68baf20a0fc0, type: 3}
+      propertyPath: grindingSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 7bfeac1c3f3212742b210ddd24e115a9, type: 3}
     - target: {fileID: 1891911625864886456, guid: e1df6dae394b11940a3e68baf20a0fc0, type: 3}
       propertyPath: m_Name
       value: PlaceHolderGrinder (2)
@@ -782,6 +802,10 @@ PrefabInstance:
       propertyPath: grinderID
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1308815486, guid: e1df6dae394b11940a3e68baf20a0fc0, type: 3}
+      propertyPath: grindingSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 7bfeac1c3f3212742b210ddd24e115a9, type: 3}
     - target: {fileID: 1891911625864886456, guid: e1df6dae394b11940a3e68baf20a0fc0, type: 3}
       propertyPath: m_Name
       value: PlaceHolderGrinder (1)
@@ -1567,6 +1591,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -54.008
       objectReference: {fileID: 0}
+    - target: {fileID: 551854214595753547, guid: 33a3a15ceed562e448df17d9274216b3, type: 3}
+      propertyPath: m_Size.y
+      value: 2.8853958
+      objectReference: {fileID: 0}
+    - target: {fileID: 551854214595753547, guid: 33a3a15ceed562e448df17d9274216b3, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.44269788
+      objectReference: {fileID: 0}
     - target: {fileID: 6269486686785582527, guid: 33a3a15ceed562e448df17d9274216b3, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.06705077
@@ -1790,6 +1822,14 @@ PrefabInstance:
     - target: {fileID: 4284272109167682134, guid: 3b34001b7a7807544b810d68eacab671, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 57.246
+      objectReference: {fileID: 0}
+    - target: {fileID: 7772630626216121202, guid: 3b34001b7a7807544b810d68eacab671, type: 3}
+      propertyPath: m_Size.y
+      value: 3.4295769
+      objectReference: {fileID: 0}
+    - target: {fileID: 7772630626216121202, guid: 3b34001b7a7807544b810d68eacab671, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.48968673
       objectReference: {fileID: 0}
     - target: {fileID: 7772630627975010480, guid: 3b34001b7a7807544b810d68eacab671, type: 3}
       propertyPath: m_Sprite
@@ -2431,6 +2471,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 151715309}
     m_Modifications:
+    - target: {fileID: 1308815486, guid: e1df6dae394b11940a3e68baf20a0fc0, type: 3}
+      propertyPath: grindingSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 7bfeac1c3f3212742b210ddd24e115a9, type: 3}
     - target: {fileID: 1891911625864886456, guid: e1df6dae394b11940a3e68baf20a0fc0, type: 3}
       propertyPath: m_Name
       value: PlaceHolderGrinder
