@@ -77,6 +77,7 @@ public class Spawner : MonoBehaviour
             organOne.startScore             = firstOrgan.score;
             organOne.decayRate              = firstOrgan.decayRate;
             organOne.toolToUse              = firstOrgan.toolToUse;
+            organOne.spriteRenderer.color   = firstOrgan.color;
 
             if (noOfOrgansToSpawn > 1)
             {
@@ -90,6 +91,7 @@ public class Spawner : MonoBehaviour
                 organTwo.startScore             = secondOrgan.score;
                 organTwo.decayRate              = secondOrgan.decayRate;
                 organTwo.toolToUse              = secondOrgan.toolToUse;
+                organTwo.spriteRenderer.color   = secondOrgan.color;
             }
             //organTwo.spriteRenderer.color   = secondOrgan.color;        // for testing will be removed once we have the sprites
 

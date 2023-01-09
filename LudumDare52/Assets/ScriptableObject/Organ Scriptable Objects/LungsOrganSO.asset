@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   organType: 3
   toolToUse: 2
-  organSprite: {fileID: 21300000, guid: fcbffbb2969a00c41afa7ebe5358273c, type: 3}
+  organSprite: {fileID: 21300000, guid: f5375f4b4a6317b4aa6c1f18fbe0152d, type: 3}
   decayRate: 2.5
   score: 4
-  color: {r: 1, g: 0.989607, b: 0, a: 1}
+  color: {r: 1, g: 0.9945061, b: 0.5330188, a: 1}

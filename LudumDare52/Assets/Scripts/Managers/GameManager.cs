@@ -82,6 +82,11 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
+    public void LoadLevelScene()
+    {
+        SceneManager.LoadScene(1);
+    }
+
     private void StartGame()
     {
 
@@ -91,6 +96,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.LogFormat("Game Over");
         gameState = LDEnums.GameState.Over;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     private void OnOrganCollectedEvent(LDEnums.OrgansType organ, float score)
@@ -100,5 +106,10 @@ public class GameManager : MonoBehaviour
         Debug.LogFormat("Score updated {0}", currentScore);
 
         EventManager.RaiseGameScoreUpdateEvent(currentScore);
+    }
+
+    public float getScore()
+    {
+        return currentScore; 
     }
 }

@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   toolType: 2
   organType: 3
-  toolSprite: {fileID: 21300000, guid: 0a8e0ea487c100c4b8e3d8f3cc28be5f, type: 3}
+  toolSprite: {fileID: 21300000, guid: 89b5a7a28320a934cbf9beeef471ac75, type: 3}
   harvestTime: 3
