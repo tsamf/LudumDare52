@@ -28,7 +28,7 @@ public class Organ : MonoBehaviour
     private float startLife = 1; /// inital lifeSpan
 
     [SerializeField] private float currentLife = 0;
-    private float currentScore = default;
+    internal float currentScore = default;
 
     internal void OnOrganPickedUP()
     {
@@ -54,13 +54,13 @@ public class Organ : MonoBehaviour
     void Update()
     {
         currentLife -= (decayRate/60 * Time.deltaTime);
-        currentScore = startScore * currentLife; /// percentage based on the start score
+        currentScore = startScore * currentLife;
+        currentScore = Mathf.Clamp01(currentScore); /// percentage based on the start score
         //slider.value = currentLife;
         fillImage.color = gradiant.Evaluate(currentLife);
-        if (currentLife >= 0)
+        if (currentLife <= 0)
         {
-            ///
-            isDecomposed = true; //
+            isDecomposed = true;
             currentScore = 0;
         }
     }

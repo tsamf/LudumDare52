@@ -7,19 +7,21 @@ public class PlayerOrganController : MonoBehaviour
     [Header("Set Dynamically")]
 
     [SerializeField] internal LDEnums.OrgansType currentOrganInHand;
+    [SerializeField] internal float currentOrganScore;
     [SerializeField] internal PlayerOrgan playerOrganComponent;
 
 
-    internal void OnPickUpOrgan(LDEnums.OrgansType newOrgan, Sprite organSprite)
+    internal void OnPickUpOrgan(LDEnums.OrgansType newOrgan, Sprite organSprite, float organScore)
     {
         currentOrganInHand = newOrgan;
+        currentOrganScore = organScore;
         playerOrganComponent.ChangeOrganImage(organSprite);
     }
 
-    internal void OnOrganCollected(LDEnums.OrgansType _organ)
+    internal void OnOrganCollected(LDEnums.OrgansType _organ, float _score)
     {
-        /// Raise event
         currentOrganInHand = LDEnums.OrgansType.None;
+        currentOrganScore = 0f;
         playerOrganComponent.ChangeOrganImage(null);
     }
 
@@ -45,7 +47,7 @@ public class PlayerOrganController : MonoBehaviour
 
     private void Start()
     {
-        OnPickUpOrgan(LDEnums.OrgansType.None, null); // initalize
+        OnPickUpOrgan(LDEnums.OrgansType.None, null, 0); // initalize
     }
 
 }

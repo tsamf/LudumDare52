@@ -18,7 +18,7 @@ public class EventManager
     #region GameLoop Events
 
     public delegate void GameOverEventDelegate();
-    public delegate void GameScoreUpdateDelegate();
+    public delegate void GameScoreUpdateDelegate(float newScore);
 
     public static GameOverEventDelegate OnGameOverEventHandler = default;
     public static GameScoreUpdateDelegate OnGameScoreUpdatetHandler = default;
@@ -31,11 +31,11 @@ public class EventManager
         }
     }
 
-    public static void RaiseGameScoreUpdateEvent()
+    public static void RaiseGameScoreUpdateEvent(float newScore)
     {
         if (OnGameScoreUpdatetHandler != null)
         {
-            OnGameScoreUpdatetHandler.Invoke();
+            OnGameScoreUpdatetHandler.Invoke(newScore);
         }
     }
     #endregion
@@ -170,8 +170,8 @@ public class EventManager
     #region Player Tool / Organ events
 
     public delegate void PlayerPickUpToolEventDelegate(LDEnums.Tools toolType, Sprite sprite, float harvestRate);
-    public delegate void PlayerPickUpOrganEventDelegate(LDEnums.OrgansType toolType, Sprite sprite);
-    public delegate void PlayerCollectOrganEventDelegate(LDEnums.OrgansType toolType);
+    public delegate void PlayerPickUpOrganEventDelegate(LDEnums.OrgansType organType, Sprite sprite, float organScore);
+    public delegate void PlayerCollectOrganEventDelegate(LDEnums.OrgansType organType,float score);
 
     public static PlayerPickUpToolEventDelegate OnPlayerPickUpToolEventHandler = default;
     public static PlayerPickUpOrganEventDelegate OnPlayerPickUpOrganEventHandler = default;
@@ -186,19 +186,19 @@ public class EventManager
         }
     }
 
-    public static void RaisePlayerPickUpOrganEvent(LDEnums.OrgansType organType, Sprite sprite)
+    public static void RaisePlayerPickUpOrganEvent(LDEnums.OrgansType organType, Sprite sprite, float organScore)
     {
         if (OnPlayerPickUpOrganEventHandler != null)
         {
-            OnPlayerPickUpOrganEventHandler.Invoke(organType, sprite);
+            OnPlayerPickUpOrganEventHandler.Invoke(organType, sprite, organScore);
         }
     }
 
-    public static void RaisePlayerCollectOrganEvent(LDEnums.OrgansType organType)
+    public static void RaisePlayerCollectOrganEvent(LDEnums.OrgansType organType, float score)
     {
         if (OnPlayerCollectOrganEventHandler != null)
         {
-            OnPlayerCollectOrganEventHandler.Invoke(organType);
+            OnPlayerCollectOrganEventHandler.Invoke(organType, score);
         }
     }
 

@@ -193,7 +193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c52d7ded7c943ea4396f1d745b98bcc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 10
   dashTime: 0.5
   dashCoolDown: 2
   dashSpeed: 10
@@ -261,6 +261,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentToolInHand: 0
+  harvestRate: 0
   playerToolComponent: {fileID: 0}
 --- !u!114 &5346455813146535077
 MonoBehaviour:
@@ -275,6 +276,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentOrganInHand: 0
+  currentOrganScore: 0
   playerOrganComponent: {fileID: 0}
 --- !u!1 &2834237296655629733
 GameObject:

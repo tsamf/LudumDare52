@@ -63,27 +63,34 @@ public class Spawner : MonoBehaviour
             deadBody.bodySpriteRenderer.sprite = bso.bodySprite;
             deadBody.bodySpriteRenderer.color = bso.color;
 
+            int noOfOrgansToSpawn = UnityRandom.Range(1,3);
 
-            var t = bso.listOfOrgans.OrderBy(arg => Guid.NewGuid()).Take(2).ToList();
+            var t = bso.listOfOrgans.OrderBy(arg => Guid.NewGuid()).Take(noOfOrgansToSpawn).ToList();
 
             OrganScriptableObject firstOrgan = t[0];
-            OrganScriptableObject secondOrgan = t[1];
 
             Organ organOne = deadBody.organs[0];
-            Organ organTwo = deadBody.organs[1];
 
+            organOne.gameObject.SetActive(true);
             organOne.scriptableObject       = firstOrgan;
-            organOne.spriteRenderer.sprite  = firstOrgan.organSprite;          
+            organOne.spriteRenderer.sprite  = firstOrgan.organSprite;
             organOne.startScore             = firstOrgan.score;
             organOne.decayRate              = firstOrgan.decayRate;
             organOne.toolToUse              = firstOrgan.toolToUse;
-            //organOne.spriteRenderer.color   = firstOrgan.color;         // for testing will be removed once we have the sprites
 
-            organTwo.scriptableObject       = secondOrgan;
-            organTwo.spriteRenderer.sprite  = secondOrgan.organSprite;
-            organTwo.startScore             = secondOrgan.score;
-            organTwo.decayRate              = secondOrgan.decayRate;
-            organTwo.toolToUse              = secondOrgan.toolToUse;
+            if (noOfOrgansToSpawn > 1)
+            {
+                OrganScriptableObject secondOrgan = t[1];
+
+                Organ organTwo = deadBody.organs[1];
+
+                organTwo.gameObject.SetActive(true);
+                organTwo.scriptableObject       = secondOrgan;
+                organTwo.spriteRenderer.sprite  = secondOrgan.organSprite;
+                organTwo.startScore             = secondOrgan.score;
+                organTwo.decayRate              = secondOrgan.decayRate;
+                organTwo.toolToUse              = secondOrgan.toolToUse;
+            }
             //organTwo.spriteRenderer.color   = secondOrgan.color;        // for testing will be removed once we have the sprites
 
             // obsolete

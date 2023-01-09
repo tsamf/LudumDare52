@@ -74,7 +74,7 @@ public class DeadBody : MonoBehaviour, IInteractable
     {
         Debug.Assert(!interactableType.Equals(LDEnums.Interactable.None), name + " interactable type is not assigned in the inspector");
 
-        organs              = GetComponentsInChildren<Organ>();
+        organs              = GetComponentsInChildren<Organ>(true);
         interactionButton   = GetComponentInChildren<InteractionButton>();
         harvestbar          = GetComponentInChildren<HarvestBar>();
         bodySpriteRenderer  = GetComponent<SpriteRenderer>();
@@ -91,14 +91,19 @@ public class DeadBody : MonoBehaviour, IInteractable
         interactionInputAction = null;
     }
 
-
+    /// <summary>
+    /// Returns organ matching the tool which is not harvested 
+    /// </summary>
+    /// <param name="toolInHand"></param>
+    /// <param name="organs"></param>
+    /// <returns></returns>
     private Organ GetOrganMatchingTool(LDEnums.Tools toolInHand, Organ[] organs)
     {
         for (int index = 0; index < organs.Length; index++)
         {
-            if (organs[index].toolToUse.Equals(toolInHand))
+            if (organs[index].toolToUse.Equals(toolInHand) && !organs[index].isHarvested)
             {
-                return organs[index]; ;
+                return organs[index];
             }
         }
 
@@ -154,18 +159,19 @@ public class DeadBody : MonoBehaviour, IInteractable
                 harvestbar.EnableBar();
                 timer += Time.deltaTime;
                 harvestbar.UpdateBar(timer/harvestTime);
-                Debug.LogFormat("Harvesting... {0}", harvestingOrgan.name);
 
                 if (timer >= harvestTime)
                 {
                     canInteract = false;
                     harvestbar.DisableBar();
                     harvestingOrgan.OnOrganPickedUP();
-                    if(harvestingOrgan)
-                        EventManager.RaisePlayerPickUpOrganEvent(harvestingOrgan.scriptableObject.organType, harvestingOrgan.scriptableObject.organSprite);
-                    
+                    if (harvestingOrgan)
+                    {
+                        Debug.LogFormat("organ {0}, Score... {1}", harvestingOrgan.scriptableObject.organType, harvestingOrgan.currentScore);
+
+                        EventManager.RaisePlayerPickUpOrganEvent(harvestingOrgan.scriptableObject.organType, harvestingOrgan.scriptableObject.organSprite, harvestingOrgan.currentScore);
+                    }
                 }
-                /// start harvesting
             }
             else
             {
