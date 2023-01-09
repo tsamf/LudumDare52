@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BodySO
   m_EditorClassIdentifier: 
   bodyType: 0
-  bodySprite: {fileID: 21300000, guid: 7e04d0e79c118f54fb810118f47bfcc3, type: 3}
+  bodySprite: {fileID: 21300000, guid: 3f66577144080f64ebf68535d3899294, type: 3}
   listOfOrgans:
   - {fileID: 11400000, guid: 193f362d43ffaa34893173ba00f4cee1, type: 2}
   - {fileID: 11400000, guid: f6258ba7a92ec9446b21cbd0a6946606, type: 2}

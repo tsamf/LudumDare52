@@ -61,7 +61,7 @@ public class Spawner : MonoBehaviour
             deadBody.currentConveyorBeltID = conveyorBeltIndx;
             deadBody.bodyType = bso.bodyType;
             deadBody.bodySpriteRenderer.sprite = bso.bodySprite;
-            deadBody.bodySpriteRenderer.color = bso.color;
+            //deadBody.bodySpriteRenderer.color = bso.color;
 
             int noOfOrgansToSpawn = UnityRandom.Range(1,3);
 

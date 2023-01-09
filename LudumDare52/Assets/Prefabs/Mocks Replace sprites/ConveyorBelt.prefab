@@ -125,7 +125,7 @@ SurfaceEffector2D:
   m_UseColliderMask: 1
   m_ColliderMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 128
   m_Speed: 2
   m_SpeedVariation: 0
   m_ForceScale: 0.1
@@ -144,6 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e44204032f4fedb458c7e1ef85faa812, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  conveyorBeltID: 0
   bodySpawnLocation: {fileID: 7559584851217666102}
   speed: 2
   motionStatus: 1
