@@ -44,6 +44,9 @@ TagManager:
   - name: Player
     uniqueID: 1320700967
     locked: 0
+  - name: Current tool
+    uniqueID: 4241421915
+    locked: 0
   - name: Conveyor
     uniqueID: 2985447417
     locked: 0

@@ -16,6 +16,7 @@ public class MovementController : MonoBehaviour
     [SerializeField] float dashTime = 1f;
     [SerializeField] float dashCoolDown = 1f;
     [SerializeField] float dashSpeed = 10f;
+    [SerializeField] AudioClip dashSFX; 
     private float TimeSinceLastDash = 0;
     private bool dashed = false;
 
@@ -102,6 +103,7 @@ public class MovementController : MonoBehaviour
     IEnumerator Dashing()
     {
         currentSpeed = dashSpeed;
+        AudioSource.PlayClipAtPoint(dashSFX, Camera.main.transform.position);
         dashed = true;
         yield return new  WaitForSeconds(dashTime);
         currentSpeed = moveSpeed;

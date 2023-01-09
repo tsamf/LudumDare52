@@ -47,3 +47,10 @@ MonoBehaviour:
   minRateOfSpawning: 0
   maxRateOfSpawning: 0
   conveyorBeltSpeed: 1.2
+  maxNoOfOrgansGrindingAllowed: 10
+  maxRageBarValue: 1
+  gameState: 0
+  currentScore: 0
+  organsCollected: []
+  deathSFX: {fileID: 8300000, guid: 5c725efdfdf29ca4093725a51a4f3cb7, type: 3}
+  timeToLoadScoreScene: 1

@@ -36,7 +36,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 4.1, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1054864682005791552
@@ -197,7 +197,8 @@ MonoBehaviour:
   moveSpeed: 10
   dashTime: 0.5
   dashCoolDown: 2
-  dashSpeed: 10
+  dashSpeed: 20
+  dashSFX: {fileID: 8300000, guid: 5920850de3c630c41a6c329f6b2fa5c1, type: 3}
   paddingLeft: 0.5
   paddingRight: 0.5
   paddingTop: 0.5
@@ -357,7 +358,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: -53545381
   m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &5463795838217270376
@@ -436,7 +437,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -5, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &4147584534475241968
@@ -548,7 +549,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: -53545381
   m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &7788560342167039366

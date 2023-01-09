@@ -42,6 +42,9 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] internal List<ScoreData> organsCollected = new List<ScoreData>();
 
+    [SerializeField] AudioClip deathSFX;
+    [SerializeField] float timeToLoadScoreScene = 1f;
+
     private void Awake()
     { 
         instance = this;
@@ -96,6 +99,13 @@ public class GameManager : MonoBehaviour
     {
         Debug.LogFormat("Game Over");
         gameState = LDEnums.GameState.Over;
+        StartCoroutine(death());
+    }
+
+    IEnumerator death()
+    {
+        AudioSource.PlayClipAtPoint(deathSFX, Camera.main.transform.position);
+        yield return new WaitForSeconds(timeToLoadScoreScene);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
