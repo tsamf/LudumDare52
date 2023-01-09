@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1054864682005791552}
   - component: {fileID: 2316429712723232755}
   - component: {fileID: 7870573564467969936}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: CurrentOrgan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,6 +105,7 @@ GameObject:
   - component: {fileID: 6033083410315879407}
   - component: {fileID: 1405345967474938631}
   - component: {fileID: 5346455813146535077}
+  - component: {fileID: -6118071696982113687}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -170,12 +171,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 685680133, guid: 94344a34fb353d942b604df6d4dfbf13, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.75, y: 4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -221,7 +222,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 5
+  m_Constraints: 4
 --- !u!61 &6033083410315879407
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -235,18 +236,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.07358867, y: -0.030480385}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
+    oldSize: {x: 1.75, y: 4}
+    newSize: {x: 1.75, y: 4}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.8240236, y: 4.1699095}
   m_EdgeRadius: 0
 --- !u!114 &1405345967474938631
 MonoBehaviour:
@@ -278,6 +279,26 @@ MonoBehaviour:
   currentOrganInHand: 0
   currentOrganScore: 0
   playerOrganComponent: {fileID: 0}
+--- !u!95 &-6118071696982113687
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2726366689902017729}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b2fc71d57d1bd0846b322161cd74aeec, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2834237296655629733
 GameObject:
   m_ObjectHideFlags: 0
@@ -290,7 +311,7 @@ GameObject:
   - component: {fileID: 4144325607265892334}
   - component: {fileID: 5463795838217270376}
   - component: {fileID: 7729607881919828971}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Canvas (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -391,7 +412,7 @@ GameObject:
   - component: {fileID: 4147584534475241968}
   - component: {fileID: 2978997717561378330}
   - component: {fileID: 2560858379569166837}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: CurrentTool
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -481,7 +502,7 @@ GameObject:
   - component: {fileID: 818770236864308523}
   - component: {fileID: 7788560342167039366}
   - component: {fileID: 1089777295259225228}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}

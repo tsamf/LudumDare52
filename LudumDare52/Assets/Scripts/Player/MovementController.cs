@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using static UnityEngine.InputSystem.InputAction;
 
+[RequireComponent(typeof(Animator))]
 public class MovementController : MonoBehaviour
 {
 
@@ -31,6 +32,24 @@ public class MovementController : MonoBehaviour
     private InputActionReference dash;
     private InputActionReference interact;
 
+    private Animator animator;
+
+    private const string HORIZONTAL = "Horizontal";
+    private const string VERTICAL = "Vertical";
+    private const string SPEED = "Speed";
+
+    private int horizontalHash = -1;
+    private int verticalHash = -1;
+    private int speedHash = -1;
+
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+
+        horizontalHash  = Animator.StringToHash(HORIZONTAL);
+        verticalHash    = Animator.StringToHash(VERTICAL);
+        speedHash       = Animator.StringToHash(SPEED);
+    }
 
     private void OnEnable()
     {
@@ -91,8 +110,15 @@ public class MovementController : MonoBehaviour
     private void Move()
     {
         Vector3 rawInput = movement.action.ReadValue<Vector2>();
+
+        animator.SetFloat(horizontalHash, rawInput.x);
+        animator.SetFloat(verticalHash, rawInput.y);
+        animator.SetFloat(speedHash, rawInput.magnitude);
+
+
         Vector2 delta = rawInput * currentSpeed * Time.deltaTime;
-        Vector2 newPos = new Vector2();
+
+        Vector2 newPos;
         newPos.x = Mathf.Clamp(transform.position.x + delta.x, minBounds.x + paddingLeft, maxBounds.x - paddingRight);
         newPos.y = Mathf.Clamp(transform.position.y + delta.y, minBounds.y + paddingBottom, maxBounds.y - paddingTop);
         transform.position = newPos;
