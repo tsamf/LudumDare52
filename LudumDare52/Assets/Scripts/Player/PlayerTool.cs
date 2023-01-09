@@ -20,7 +20,7 @@ public class PlayerTool : MonoBehaviour
             return;
         }
 
-        Debug.LogFormat("Cahnge tool image {0}", sprite.name);
+        //Debug.LogFormat("Cahnge tool image {0}", sprite.name);
 
 
         if (toolImage && sprite)

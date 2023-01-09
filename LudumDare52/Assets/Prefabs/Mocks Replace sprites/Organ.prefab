@@ -358,8 +358,10 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 5
     m_NumAlphaKeys: 2
+  scriptableObject: {fileID: 0}
   spriteRenderer: {fileID: 0}
   isDecomposed: 0
+  isHarvested: 1
   decayRate: 0
   startScore: 0
   toolToUse: 0

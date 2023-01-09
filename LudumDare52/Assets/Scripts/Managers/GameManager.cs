@@ -113,7 +113,7 @@ public class GameManager : MonoBehaviour
     {
         organsCollected.Add(new ScoreData(organ, score));
         currentScore += score;
-        Debug.LogFormat("Score updated {0}", currentScore);
+        //Debug.LogFormat("Score updated {0}", currentScore);
 
         EventManager.RaiseGameScoreUpdateEvent(currentScore);
     }

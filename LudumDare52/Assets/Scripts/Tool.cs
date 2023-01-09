@@ -71,7 +71,7 @@ public class Tool : MonoBehaviour, IInteractable
             bool keyPressed = interactionInputAction.action.WasPressedThisFrame();
             if (keyPressed)
             {
-                Debug.LogFormat("E pressed {0}", toolType.ToString());
+                //Debug.LogFormat("E pressed {0}", toolType.ToString());
                 /// swap tool in the player tool
                 EventManager.RaisePlayerPickUpToolEvent(toolScriptableObject.toolType, toolScriptableObject.toolSprite, toolScriptableObject.harvestTime, toolScriptableObject.pickupSFX);
             }

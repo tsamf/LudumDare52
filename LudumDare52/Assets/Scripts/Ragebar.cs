@@ -36,7 +36,7 @@ public class Ragebar : MonoBehaviour
     // Update is called once per frame
     internal void UpdateBar(float value)
     {
-        Debug.LogFormat("rage value {0} ", value);
+        //Debug.LogFormat("rage value {0} ", value);
 
         value /= slider.maxValue;
         slider.value += value;

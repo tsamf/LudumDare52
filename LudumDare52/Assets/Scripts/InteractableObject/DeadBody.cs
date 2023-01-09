@@ -123,6 +123,8 @@ public class DeadBody : MonoBehaviour, IInteractable
 
         if (collision.TryGetComponent(out PlayerToolController toolController) && collision.TryGetComponent(out PlayerOrganController organController))
         {
+            if (toolController.currentToolInHand.Equals(LDEnums.Tools.None))
+                return;
 
             if (!organController.currentOrganInHand.Equals(LDEnums.OrgansType.None))
                 return;
@@ -136,7 +138,7 @@ public class DeadBody : MonoBehaviour, IInteractable
                 return;
             }
 
-            Debug.LogFormat("Organ hravesting {0}", harvestingOrgan.name);
+            Debug.LogFormat("Organ hravesting {0}", harvestingOrgan.scriptableObject.name);
 
             harvestTime = toolController.harvestRate;
             OnEnterInteractableTriggerVolume();

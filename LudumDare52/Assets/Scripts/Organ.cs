@@ -15,7 +15,7 @@ public class Organ : MonoBehaviour
     [SerializeField] internal SpriteRenderer spriteRenderer = default;
 
     [SerializeField] internal bool isDecomposed = false; /// use this to prevent player from harvest organ which are decomposed
-    [SerializeField] internal bool isHarvested = false;
+    [SerializeField] internal bool isHarvested = true;
 
     [Tooltip("value 60 means in 1 second this organ will be decomposed")]
     [SerializeField] internal float decayRate;
@@ -33,6 +33,8 @@ public class Organ : MonoBehaviour
     internal void OnOrganPickedUP()
     {
         isHarvested = true;
+        Debug.LogFormat("organ {0},is harvested... {1}", scriptableObject.organType,isHarvested);
+
         gameObject.SetActive(false);
     }
 
@@ -46,10 +48,12 @@ public class Organ : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.LogFormat("organ start {0}", scriptableObject.organType);
         currentLife = startLife;
         currentScore = startScore;
+        isHarvested = false;
     }
-  
+
     // Update is called once per frame
     void Update()
     {

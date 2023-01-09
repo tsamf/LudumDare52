@@ -23,7 +23,7 @@ public class Grinder : MonoBehaviour
 
             if (!deadBody.organs[0].isHarvested || !deadBody.organs[1].isHarvested)
             {
-                Debug.LogFormat("Body with organ grinded {0} ", GameManager.instance.maxRageBarValue / GameManager.instance.maxNoOfOrgansGrindingAllowed);
+                //Debug.LogFormat("Body with organ grinded {0} ", GameManager.instance.maxRageBarValue / GameManager.instance.maxNoOfOrgansGrindingAllowed);
                 EventManager.RaiseUpdateRageMeterEvent(GameManager.instance.maxRageBarValue/ GameManager.instance.maxNoOfOrgansGrindingAllowed);
             }
 

@@ -35,7 +35,7 @@ public class ConveyorBelt : MonoBehaviour
             return;
 
         OnUpdateMotionStatus(LDEnums.ConveyorBeltMotionStatus.Active);
-        OnUpdateSpeed(speed);
+        OnUpdateSpeed(GameManager.instance.conveyorBeltSpeed);
     }
 
 
