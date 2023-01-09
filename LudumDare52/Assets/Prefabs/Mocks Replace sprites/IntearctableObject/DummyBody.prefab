@@ -284,7 +284,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8087665649018883134}
   - component: {fileID: 2803868203572922612}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: InteactionVolume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -474,6 +474,7 @@ MonoBehaviour:
   harvestTime: 0
   timer: 0
   harvestingOrgan: {fileID: 0}
+  cbMoveSpeed: 0
 --- !u!212 &2689712349749868652
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -564,7 +565,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 1}
+    oldSize: {x: 4, y: 2}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

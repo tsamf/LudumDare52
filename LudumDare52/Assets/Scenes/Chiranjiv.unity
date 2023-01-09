@@ -722,6 +722,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 810326929}
     m_Modifications:
+    - target: {fileID: 4496617418868864228, guid: 6f6129f094f815a469c7f9d1596236c3, type: 3}
+      propertyPath: m_UsedByEffector
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4496617418868864232, guid: 6f6129f094f815a469c7f9d1596236c3, type: 3}
       propertyPath: m_Name
       value: ConveyorBelt 2
@@ -773,6 +777,14 @@ PrefabInstance:
     - target: {fileID: 4496617418868864234, guid: 6f6129f094f815a469c7f9d1596236c3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4496617418868864235, guid: 6f6129f094f815a469c7f9d1596236c3, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4496617418868864235, guid: 6f6129f094f815a469c7f9d1596236c3, type: 3}
+      propertyPath: m_ColliderMask.m_Bits
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 8317665699856098409, guid: 6f6129f094f815a469c7f9d1596236c3, type: 3}
       propertyPath: conveyorBeltID
@@ -1276,6 +1288,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 810326929}
     m_Modifications:
+    - target: {fileID: 4496617418868864228, guid: 6f6129f094f815a469c7f9d1596236c3, type: 3}
+      propertyPath: m_UsedByEffector
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4496617418868864232, guid: 6f6129f094f815a469c7f9d1596236c3, type: 3}
       propertyPath: m_Name
       value: ConveyorBelt 3
@@ -1327,6 +1343,14 @@ PrefabInstance:
     - target: {fileID: 4496617418868864234, guid: 6f6129f094f815a469c7f9d1596236c3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4496617418868864235, guid: 6f6129f094f815a469c7f9d1596236c3, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4496617418868864235, guid: 6f6129f094f815a469c7f9d1596236c3, type: 3}
+      propertyPath: m_ColliderMask.m_Bits
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 8317665699856098409, guid: 6f6129f094f815a469c7f9d1596236c3, type: 3}
       propertyPath: conveyorBeltID

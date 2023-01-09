@@ -30,6 +30,7 @@ public class DeadBody : MonoBehaviour, IInteractable
     public float harvestTime = 0f;
     public float timer = 0f;
     public Organ harvestingOrgan;
+    private ConveyorBelt conveyorbelt = null;
 
     #region Interface Implementation
 
@@ -113,6 +114,11 @@ public class DeadBody : MonoBehaviour, IInteractable
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if(collision.gameObject.TryGetComponent(out ConveyorBelt cb))
+        {
+            conveyorbelt = cb;
+        }
+
         if (collision.TryGetComponent(out PlayerToolController toolController) && collision.TryGetComponent(out PlayerOrganController organController))
         {
 
@@ -142,12 +148,25 @@ public class DeadBody : MonoBehaviour, IInteractable
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        if (collision.gameObject.TryGetComponent(out ConveyorBelt cb))
+        {
+            conveyorbelt = null;
+        }
+
         if (collision.TryGetComponent(out MovementController movementController))
         {
             OnExitInteractableTriggerVolume();
         }
     }
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.TryGetComponent( out ConveyorBelt cb))
+        {
+        }
+    }
+
+    public float cbMoveSpeed = 0;
 
     void Update()
     {
@@ -179,6 +198,12 @@ public class DeadBody : MonoBehaviour, IInteractable
                 harvestbar.DisableBar();
             }
         }
+
+        if (conveyorbelt != null)
+        {
+            transform.Translate(transform.right * conveyorbelt.currentSpeed * Time.deltaTime);
+        }
+
     }
 
     #endregion

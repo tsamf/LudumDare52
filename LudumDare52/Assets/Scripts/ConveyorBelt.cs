@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[RequireComponent(typeof(SurfaceEffector2D))]
+//[RequireComponent(typeof(SurfaceEffector2D))]
 public class ConveyorBelt : MonoBehaviour
 {
     [Header("Set in Inspector")]
@@ -13,7 +13,7 @@ public class ConveyorBelt : MonoBehaviour
 
     [SerializeField] internal Transform bodySpawnLocation;
 
-    [SerializeField] private float speed;
+    [SerializeField] internal float speed;
 
     /// <summary>
     /// Status updates dynamically during runtime e.g when player interacting with the body to harvest organ this will be set to paused
@@ -23,10 +23,10 @@ public class ConveyorBelt : MonoBehaviour
 
     [Header("Set Dynamically")]
 
-    [SerializeField] private SurfaceEffector2D surfaceEffector2D = default;
+    //[SerializeField] private SurfaceEffector2D surfaceEffector2D = default;
 
     private const float pauseSpeed = 0;
-    private float currentSpeed = 0;
+    internal float currentSpeed = 0;
 
 
     public void EnableMotion(int cbID)
@@ -52,7 +52,7 @@ public class ConveyorBelt : MonoBehaviour
     public void OnUpdateSpeed(float newSpeed)
     {
         currentSpeed = newSpeed;
-        if(surfaceEffector2D) surfaceEffector2D.speed = currentSpeed;
+        //if(surfaceEffector2D) surfaceEffector2D.speed = currentSpeed;
     }
 
 
@@ -66,7 +66,7 @@ public class ConveyorBelt : MonoBehaviour
     {
         Debug.Assert(bodySpawnLocation != null, name + " conveyor belt is missing body spawn location in the inspector");
 
-        surfaceEffector2D = GetComponent<SurfaceEffector2D>();
+        //surfaceEffector2D = GetComponent<SurfaceEffector2D>();
     }
 
     private void Start()
