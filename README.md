@@ -1,3 +1,5 @@
+#### This game was made in Unity over a 72 hour period for the Ludum Dare 52 game jam. 
+
 #### _A Story of the Diabolical Doctor Shelly_
 
 In this tongue-in-cheek endless horror game **extract as many organs as you can** deep within a questionable lab filled with conveyer belts and mysterious bodies. Time ticks away in your pursuit to provide the basic building blocks of the overseer’s monstrous creations – **brains, hearts, lungs and kidneys.** Constructing the ultimate abomination requires lots of fleshy essentials, so use the **color-coded tools** to deposit fresh meat before the heartless Dr. Shelly (do they even have a degree?) snaps and harvests **you** instead!
