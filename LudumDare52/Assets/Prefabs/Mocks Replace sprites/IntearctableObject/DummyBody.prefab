@@ -319,7 +319,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.03269136, y: 0.10897112}
+  m_Offset: {x: -0.067495346, y: -0.5222049}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -330,7 +330,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.939686, y: 2.6781554}
+  m_Size: {x: 4.3422995, y: 3.8202825}
   m_EdgeRadius: 0
 --- !u!1 &2530509019186007413
 GameObject:
@@ -471,12 +471,12 @@ MonoBehaviour:
   interactionInputAction: {fileID: 0}
   harvestingSFX: {fileID: 8300000, guid: 841434209c6e09e4eac60e65479dc80c, type: 3}
   hasPlayed: 0
+  cb: {fileID: 0}
   canInteract: 0
   isHarvesting: 0
   harvestTime: 0
   timer: 0
   harvestingOrgan: {fileID: 0}
-  cbMoveSpeed: 0
 --- !u!212 &2689712349749868652
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -544,7 +544,7 @@ Rigidbody2D:
   m_Mass: 10
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1

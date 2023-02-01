@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 25d262050bed95b428959bd7e2997d1f, type: 3}
-  m_Name: ConveyorBeltInteractableObjectSO
+  m_Name: ACRepairableObjectSO
   m_EditorClassIdentifier: 
-  interactableType: 2
-  fixRate: 3
+  repairableType: 1
+  repairDuration: 2

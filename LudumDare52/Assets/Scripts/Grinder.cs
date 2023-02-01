@@ -1,35 +1,43 @@
-using System.Collections;
-using System.Collections.Generic;
+using DissassemblyLine.Interfaces;
 using UnityEngine;
 
-public class Grinder : MonoBehaviour
+namespace DissassemblyLine
 {
-    [Range(-1,2)]
-    [SerializeField] private int grinderID = -1;
-
-    [SerializeField] private AudioClip grindingSFX;
-
-    private void Awake()
+    public class Grinder : MonoBehaviour
     {
-        Debug.Assert(grinderID != -1, name + " grinder Id is not set in the inspector");
-    }
+
+        [SerializeField] private AudioClip grindingSFX;
+
+        private int grinderID = -1;
 
 
-    public void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.TryGetComponent(out DeadBody deadBody))
+        private void Awake()
         {
-            EventManager.RaiseBodyGrindedEvent(deadBody.currentConveyorBeltID);
+            Debug.Assert(grindingSFX, name + " is missing grinding fx in the inspector!");
+        }
 
-            if (!deadBody.organs[0].isHarvested || !deadBody.organs[1].isHarvested)
+
+        private void Start()
+        {
+            ConveyorBelt conveyorBelt = GetComponentInParent<ConveyorBelt>();
+
+            Debug.Assert(conveyorBelt, "Unable to find conveyor belt on parent object for "+ name);
+
+            if (conveyorBelt)
             {
-                //Debug.LogFormat("Body with organ grinded {0} ", GameManager.instance.maxRageBarValue / GameManager.instance.maxNoOfOrgansGrindingAllowed);
-                EventManager.RaiseUpdateRageMeterEvent(GameManager.instance.maxRageBarValue/ GameManager.instance.maxNoOfOrgansGrindingAllowed);
+                grinderID = conveyorBelt.ConveyorBeltID;
             }
+        }
 
-            AudioSource.PlayClipAtPoint(grindingSFX, Camera.main.transform.position);
-            Destroy(deadBody.gameObject);
+
+        public void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.TryGetComponent(out IGrindable grindable))
+            {
+                grindable.OnGrind();
+                //EventManager.RaiseBodyGrindedEvent(deadBody.currentConveyorBeltID);
+                if (grindingSFX) AudioSource.PlayClipAtPoint(grindingSFX, Camera.main.transform.position);
+            }
         }
     }
-
 }

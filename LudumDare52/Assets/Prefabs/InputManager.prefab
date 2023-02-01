@@ -48,3 +48,4 @@ MonoBehaviour:
   movement: {fileID: 1630486612170162991, guid: 5cdb6bb6b2869534cbc86d515889439b, type: 3}
   dash: {fileID: 7366924895556077973, guid: 5cdb6bb6b2869534cbc86d515889439b, type: 3}
   interact: {fileID: -5555946553523900550, guid: 5cdb6bb6b2869534cbc86d515889439b, type: 3}
+  pauseResume: {fileID: -4576071671065478174, guid: 5cdb6bb6b2869534cbc86d515889439b, type: 3}

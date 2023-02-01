@@ -41,6 +41,13 @@ public class LDEnums
         Tools = 5,
     }
 
+    public enum RepairableObjects
+    {
+        None = 0,
+        AC = Interactable.AC,
+        FuseBox = Interactable.FuseBox,
+    }
+
     public enum ConveyorBeltMotionStatus
     {
         None = 0,
@@ -51,10 +58,11 @@ public class LDEnums
 
     public enum GameState
     {
-        None = 0,
-        Running = 1,
-        Paused = 2,
-        Over = 3,
+        None        = 0,
+        StartMenu   = 1,
+        Running     = 2,
+        Paused      = 3,
+        Over        = 4,
     }
 
     public static Random test()

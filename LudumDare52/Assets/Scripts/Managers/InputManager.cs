@@ -14,6 +14,7 @@ public class InputManager : MonoBehaviour
     [SerializeField] internal InputActionReference movement;
     [SerializeField] internal InputActionReference dash;
     [SerializeField] internal InputActionReference interact;
+    [SerializeField] internal InputActionReference pauseResume;
 
 
     private void Awake()

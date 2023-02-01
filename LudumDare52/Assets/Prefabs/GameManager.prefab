@@ -44,13 +44,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50aec1d606f9e564b9de0b0f4ae588d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minRateOfSpawning: 0
-  maxRateOfSpawning: 0
-  conveyorBeltSpeed: 0.5
   maxNoOfOrgansGrindingAllowed: 10
   maxRageBarValue: 1
+  startState: 2
   gameState: 0
   currentScore: 0
   organsCollected: []
   deathSFX: {fileID: 8300000, guid: 5c725efdfdf29ca4093725a51a4f3cb7, type: 3}
   timeToLoadScoreScene: 1
+  minConveyorBeltSpeed: 0.4
+  maxConveyorBeltSpeed: 0.5
+  currentConveyorBeltSpeed: 2
+  minTimeBtwnBreakdowns: 2
+  maxTimeBtwnBreakdowns: 5
+  availableRepairables: 
+  currentTimeBtwnBreakdowns: 0
+  pauseResumeInputAction: {fileID: 0}

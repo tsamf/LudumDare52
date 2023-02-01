@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class EventManager
 {
-
     public delegate void OnUpdateRageMeterEventDelegate(float arg0);
     public delegate void OnHarvetsToolErrorEventDelegate();
 
@@ -83,12 +82,16 @@ public class EventManager
 
     public delegate void OnCBUpdateSpeedEventDelegate(float speed);
 
+    public delegate void ConveyorBeltAvailabilitUpdated(int cbID);
+
 
     public static OnCBMotionPauseEventDelegate OnCBMotionPauseEventHandler = default;
 
     public static OnCBMotionResumeEventDelegate OnCBMotionResumeEventHandler = default;
 
     public static OnCBUpdateSpeedEventDelegate OnCBUpdateSpeedEventHandler = default;
+
+    public static ConveyorBeltAvailabilitUpdated OnConveyorBeltAvailabilityUpdatedEventHandler = default;
 
 
     #endregion
@@ -116,6 +119,14 @@ public class EventManager
         if (OnCBUpdateSpeedEventHandler != null)
         {
             OnCBUpdateSpeedEventHandler.Invoke(speed);
+        }
+    }
+
+    public static void RaiseConveyorBeltAvailabilityUpdatedEvent(int cbID)
+    {
+        if (OnConveyorBeltAvailabilityUpdatedEventHandler != null)
+        {
+            OnConveyorBeltAvailabilityUpdatedEventHandler.Invoke(cbID);
         }
     }
 
@@ -205,5 +216,45 @@ public class EventManager
 
     #endregion
 
+
+    #region Objects Breakdown events
+
+    public delegate void ObjectBreakdownEventDelegate(LDEnums.RepairableObjects repairableObject);
+    public delegate void ObjectRepairedEventDelegate(LDEnums.RepairableObjects repairableObject);
+
+    public static ObjectBreakdownEventDelegate OnObjectBreakdownEventHandler;
+    public static ObjectBreakdownEventDelegate OnObjectRepairedEventHandler;
+
+
+    public static void RaiseOnObjectBreakdownEvent(LDEnums.RepairableObjects repairableObject)
+    {
+        if (OnObjectBreakdownEventHandler != null)
+        {
+            OnObjectBreakdownEventHandler.Invoke(repairableObject);
+        }
+    }
+
+    public static void RaiseOnObjectRepairedEvent(LDEnums.RepairableObjects repairableObject)
+    {
+        if (OnObjectRepairedEventHandler != null)
+        {
+            OnObjectRepairedEventHandler.Invoke(repairableObject);
+        }
+    }
+
+    #endregion
+
+
+    public delegate void TutorialStepCompleted(bool arg0);
+
+    public static TutorialStepCompleted OnTutorialStepCompletedEventHandler = default;
+
+    public static void RaiseOnTutorialStepCompletedEvent(bool value)
+    {
+        if (OnTutorialStepCompletedEventHandler != null)
+        {
+            OnTutorialStepCompletedEventHandler.Invoke(value);
+        }
+    }
 
 }

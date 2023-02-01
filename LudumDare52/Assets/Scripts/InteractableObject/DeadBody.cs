@@ -1,220 +1,252 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(SpriteRenderer), typeof(Rigidbody2D))]
-public class DeadBody : MonoBehaviour, IInteractable
+using DissassemblyLine.Interfaces;
+
+namespace DissassemblyLine
 {
-    [Header("Set In Inspector")]
-
-    [SerializeField] internal LDEnums.Interactable interactableType;
-
-    //[SerializeField] internal SpriteRenderer organOneSpriteRenderer;
-    //[SerializeField] internal SpriteRenderer organTwoSpriteRenderer;
-
-    [Header("Set dynamically")]
-
-    [SerializeField] internal SpriteRenderer bodySpriteRenderer;
-    [SerializeField] internal InteractionButton interactionButton;
-    [SerializeField] internal Rigidbody2D rigidBody2D;
-    [SerializeField] internal Organ[] organs;
-    [SerializeField] internal HarvestBar harvestbar;
-    [SerializeField] internal LDEnums.BodyType bodyType;
-    /// Which conveyor belt this body is on
-    [SerializeField] internal int currentConveyorBeltID;
-    [SerializeField] internal InputActionReference interactionInputAction;
-    [SerializeField] internal AudioClip harvestingSFX;
-    [SerializeField] internal bool hasPlayed;
-
-    public bool canInteract = false;
-    public bool isHarvesting = false;
-    public float harvestTime = 0f;
-    public float timer = 0f;
-    public Organ harvestingOrgan;
-    private ConveyorBelt conveyorbelt = null;
-
-    #region Interface Implementation
-
-    /// Interaface IInteractable Implementation
-    LDEnums.Interactable IInteractable.interactableType 
+    [RequireComponent(typeof(SpriteRenderer), typeof(Rigidbody2D))]
+    public class DeadBody : MonoBehaviour, IInteractable, IMoveable, IGrindable
     {
-        get => interactableType;
-    }
+        [Header("Set In Inspector")]
 
-    public void OnEnterInteractableTriggerVolume()
-    {
-        rigidBody2D.velocity = Vector2.zero;
-        rigidBody2D.bodyType = RigidbodyType2D.Kinematic;
+        [SerializeField] internal LDEnums.Interactable interactableType;
 
-        EventManager.RaiseOnConveyorBeltMotionPauseEvent(currentConveyorBeltID);
+        [Header("Set dynamically")]
 
-        if (interactionButton)
+        [SerializeField] internal LDEnums.BodyType bodyType;
+        [SerializeField] internal SpriteRenderer bodySpriteRenderer;
+        [SerializeField] internal Organ[] organs;
+
+        [SerializeField] private InteractionButton interactionButton;
+        [SerializeField] private Rigidbody2D rigidBody2D;
+        [SerializeField] private HarvestBar harvestbar;
+
+        [SerializeField] private InputActionReference interactionInputAction;
+        [SerializeField] private AudioClip harvestingSFX;
+        [SerializeField] private bool hasPlayed;
+
+        [SerializeField] private int currentConveyorBeltID;
+
+        private bool canInteract = false;
+        private float harvestTime = 0f;
+        private float timer = 0f;
+        private Organ harvestingOrgan;
+
+
+        #region IInteractable Interface Implementation
+
+
+        LDEnums.Interactable IInteractable.interactableType
         {
-            canInteract = true;
-            interactionButton.OnEnableCanvasComponent();
+            get => interactableType;
         }
-    }
 
-    public void OnExitInteractableTriggerVolume()
-    {
-        rigidBody2D.bodyType = RigidbodyType2D.Dynamic;
-        EventManager.RaiseOnConveyorBeltMotionResumeEvent(currentConveyorBeltID);
 
-        if (interactionButton)
+        public void OnEnterInteractableTriggerVolume()
         {
-            canInteract = false;
-            interactionButton.OnDisableCanvasComponent();
-        }
-    }
+            rigidBody2D.velocity = Vector2.zero;
+            rigidBody2D.bodyType = RigidbodyType2D.Kinematic;
 
-    #endregion
+            EventManager.RaiseOnConveyorBeltMotionPauseEvent(currentConveyorBeltID);
 
-
-    #region Mono
-
-    private void Awake()
-    {
-        Debug.Assert(!interactableType.Equals(LDEnums.Interactable.None), name + " interactable type is not assigned in the inspector");
-
-        organs              = GetComponentsInChildren<Organ>(true);
-        interactionButton   = GetComponentInChildren<InteractionButton>();
-        harvestbar          = GetComponentInChildren<HarvestBar>();
-        bodySpriteRenderer  = GetComponent<SpriteRenderer>();
-        rigidBody2D         = GetComponent<Rigidbody2D>();
-    }
-
-    private void OnEnable()
-    {
-        interactionInputAction = InputManager.instance.interact;
-    }
-
-    private void OnDisable()
-    {
-        interactionInputAction = null;
-    }
-
-    /// <summary>
-    /// Returns organ matching the tool which is not harvested 
-    /// </summary>
-    /// <param name="toolInHand"></param>
-    /// <param name="organs"></param>
-    /// <returns></returns>
-    private Organ GetOrganMatchingTool(LDEnums.Tools toolInHand, Organ[] organs)
-    {
-        for (int index = 0; index < organs.Length; index++)
-        {
-            if (organs[index].toolToUse.Equals(toolInHand) && !organs[index].isHarvested)
+            if (interactionButton)
             {
-                return organs[index];
+                canInteract = true;
+                interactionButton.OnEnableCanvasComponent();
             }
         }
 
-        return null;
-    }
 
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.gameObject.TryGetComponent(out ConveyorBelt cb))
+        public void OnExitInteractableTriggerVolume()
         {
-            conveyorbelt = cb;
+            rigidBody2D.bodyType = RigidbodyType2D.Dynamic;
+            EventManager.RaiseOnConveyorBeltMotionResumeEvent(currentConveyorBeltID);
+
+            if (interactionButton)
+            {
+                canInteract = false;
+                interactionButton.OnDisableCanvasComponent();
+            }
         }
 
-        if (collision.TryGetComponent(out PlayerToolController toolController) && collision.TryGetComponent(out PlayerOrganController organController))
+
+        #endregion
+
+
+        #region IMoveable Interface Implementation
+
+
+        public Action<IMoveable> OnObjectDisabled
         {
-            if (toolController.currentToolInHand.Equals(LDEnums.Tools.None))
-                return;
+            get; set;
+        }
 
-            if (!organController.currentOrganInHand.Equals(LDEnums.OrgansType.None))
-                return;
 
-            /// check current tool player has
-            /// then pick the organ matching the tool
-            harvestingOrgan = GetOrganMatchingTool(toolController.currentToolInHand, organs);
-            if (harvestingOrgan == null)
+        public int ConveyorBeltID
+        {
+            get => currentConveyorBeltID;
+            set => currentConveyorBeltID = value;
+        }
+
+
+        public void MoveOnBelt(float speed)
+        {
+            if(transform)
+                transform.Translate(transform.right * speed * Time.deltaTime);
+        }
+
+
+        #endregion
+
+
+        #region IGrindable Interface Impelementation
+
+
+        public void OnGrind()
+        {
+            if (!organs[0].isHarvested || !organs[1].isHarvested)
             {
-                harvestTime = 0;
-                return;
+                //Debug.LogFormat("Body with organ grinded {0} ", GameManager.instance.maxRageBarValue / GameManager.instance.maxNoOfOrgansGrindingAllowed);
+                EventManager.RaiseUpdateRageMeterEvent(GameManager.instance.maxRageBarValue / GameManager.instance.maxNoOfOrgansGrindingAllowed);
             }
 
-            Debug.LogFormat("Organ hravesting {0}", harvestingOrgan.scriptableObject.name);
-
-            harvestTime = toolController.harvestRate;
-            OnEnterInteractableTriggerVolume();
-
-            /// Show Interaction button on UI
-            /// Send the information of organ if the player can harvest if he can, based on the tool he is holding
-            /// timer for harvesting
-        }
-    }
-
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.TryGetComponent(out ConveyorBelt cb))
-        {
-            conveyorbelt = null;
+            Destroy(gameObject);
         }
 
-        if (collision.TryGetComponent(out MovementController movementController))
-        {
-            OnExitInteractableTriggerVolume();
-        }
-    }
 
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.TryGetComponent( out ConveyorBelt cb))
-        {
-        }
-    }
+        #endregion
 
-    public float cbMoveSpeed = 0;
 
-    void Update()
-    {
-        if (canInteract)
+        /// <summary>
+        /// Returns organ matching the tool which is not harvested 
+        /// </summary>
+        /// <param name="toolInHand"></param>
+        /// <param name="organs"></param>
+        /// <returns></returns>
+        private Organ GetOrganMatchingTool(LDEnums.Tools toolInHand, Organ[] organs)
         {
-            bool keyPressed = interactionInputAction.action.IsPressed();
-            if (keyPressed)
+            for (int index = 0; index < organs.Length; index++)
             {
-                if(!hasPlayed)
+                if (organs[index].toolToUse.Equals(toolInHand) && !organs[index].isHarvested)
                 {
-                    AudioSource.PlayClipAtPoint(harvestingSFX, Camera.main.transform.position);
-                    hasPlayed = true;
+                    return organs[index];
                 }
-                harvestbar.EnableBar();
-                timer += Time.deltaTime;
-                harvestbar.UpdateBar(timer/harvestTime);
+            }
 
-                if (timer >= harvestTime)
+            return null;
+        }
+
+
+        private void HandleOrganHarvesting()
+        {
+            if (canInteract)
+            {
+                bool keyPressed = interactionInputAction.action.IsPressed();
+                if (keyPressed)
                 {
-                    hasPlayed = false;
-                    canInteract = false;
-                    harvestbar.DisableBar();
-                    harvestingOrgan.OnOrganPickedUP();
-                    if (harvestingOrgan)
+                    if (!hasPlayed)
                     {
-                        Debug.LogFormat("organ {0}, Score... {1}", harvestingOrgan.scriptableObject.organType, harvestingOrgan.currentScore);
+                        AudioSource.PlayClipAtPoint(harvestingSFX, Camera.main.transform.position);
+                        hasPlayed = true;
+                    }
+                    harvestbar.EnableBar();
+                    timer += Time.deltaTime;
+                    harvestbar.UpdateBar(timer / harvestTime);
 
-                        EventManager.RaisePlayerPickUpOrganEvent(harvestingOrgan.scriptableObject.organType, harvestingOrgan.scriptableObject.organSprite, harvestingOrgan.currentScore);
+                    if (timer >= harvestTime)
+                    {
+                        hasPlayed = false;
+                        canInteract = false;
+                        harvestbar.DisableBar();
+                        harvestingOrgan.OnOrganPickedUP();
+                        if (harvestingOrgan)
+                        {
+                            Debug.LogFormat("organ {0}, Score... {1}", harvestingOrgan.scriptableObject.organType, harvestingOrgan.currentScore);
+
+                            EventManager.RaisePlayerPickUpOrganEvent(harvestingOrgan.scriptableObject.organType, harvestingOrgan.scriptableObject.organSprite, harvestingOrgan.currentScore);
+                        }
                     }
                 }
-            }
-            else
-            {
-                timer = 0;
-                harvestbar.DisableBar();
+                else
+                {
+                    timer = 0;
+                    harvestbar.DisableBar();
+                }
             }
         }
 
-        if (conveyorbelt != null)
+
+        #region Mono
+
+        private void Awake()
         {
-            transform.Translate(transform.right * conveyorbelt.currentSpeed * Time.deltaTime);
+            Debug.Assert(!interactableType.Equals(LDEnums.Interactable.None), name + " interactable type is not assigned in the inspector");
+
+            organs = GetComponentsInChildren<Organ>(true);
+            interactionButton = GetComponentInChildren<InteractionButton>();
+            harvestbar = GetComponentInChildren<HarvestBar>();
+            bodySpriteRenderer = GetComponent<SpriteRenderer>();
+            rigidBody2D = GetComponent<Rigidbody2D>();
         }
 
-    }
+        private void OnEnable()
+        {
+            interactionInputAction = InputManager.instance.interact;
+        }
 
-    #endregion
+        private void OnDisable()
+        {
+            interactionInputAction = null;
+            //if(cb) cb.RemoveBody(this);
+            OnObjectDisabled?.Invoke(this);
+            OnObjectDisabled = null;
+        }
+
+        private void OnDestroy()
+        {
+
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.TryGetComponent(out PlayerToolController toolController) && collision.TryGetComponent(out PlayerOrganController organController))
+            {
+                if (toolController.currentToolInHand.Equals(LDEnums.Tools.None))
+                    return;
+
+                if (!organController.currentOrganInHand.Equals(LDEnums.OrgansType.None))
+                    return;
+
+                /// check current tool player has
+                /// then pick the organ matching the tool
+                harvestingOrgan = GetOrganMatchingTool(toolController.currentToolInHand, organs);
+                if (harvestingOrgan == null)
+                {
+                    harvestTime = 0;
+                    return;
+                }
+
+                Debug.LogFormat("Organ hravesting {0}", harvestingOrgan.scriptableObject.name);
+
+                harvestTime = toolController.harvestRate;
+                OnEnterInteractableTriggerVolume();
+            }
+        }
+
+        private void OnTriggerExit2D(Collider2D collision)
+        {
+            if (collision.TryGetComponent(out MovementController movementController))
+            {
+                OnExitInteractableTriggerVolume();
+            }
+        }
+
+        void Update()
+        {
+            HandleOrganHarvesting();
+        }
+        #endregion
+    }
 }

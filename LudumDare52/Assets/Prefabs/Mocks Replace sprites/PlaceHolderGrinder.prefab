@@ -124,4 +124,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32211774345ec354a9aaf0d8e2c8957f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grinderID: 0
+  grindingSFX: {fileID: 8300000, guid: 7bfeac1c3f3212742b210ddd24e115a9, type: 3}

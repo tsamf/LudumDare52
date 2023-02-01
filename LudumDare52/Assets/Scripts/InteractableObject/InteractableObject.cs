@@ -7,7 +7,7 @@ using UnityEngine;
 /// </summary>
 public class InteractableObject : MonoBehaviour
 {
-    public InteractableScriptableObject interactableObjectSO;
+    public RepairableScriptableObject interactableObjectSO;
 
 
 
